@@ -1,6 +1,6 @@
 {
 	"name": "@dtavern/options",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Js options validator",
 	"author": {
 		"name": "Dmitry Tavern",
