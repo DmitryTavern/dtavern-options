@@ -18,30 +18,30 @@ npm i @dtavern/options
 const { defineOptions } = require('@dtavern/options')
 
 function someFunction(options) {
-	defineOptions(options, {
-		name: String,
-		age: [String, Number],
-		colors: {
-			type: Array,
-			required: false,
-			default: () => ['red', 'blue'],
-			validator: (value) => value.length > 0,
-		},
-	})
+  defineOptions(options, {
+    name: String,
+    age: [String, Number],
+    colors: {
+      type: Array,
+      required: false,
+      default: () => ['red', 'blue'],
+      validator: (value) => value.length > 0,
+    },
+  })
 
-	console.log(options)
+  console.log(options)
 }
 
 someFunction({
-	name: 'Rocket',
-	age: '17',
+  name: 'Rocket',
+  age: '17',
 })
 
 /* Output:
 {
-	name: 'Rocket',
-	age: '17',
-	colors: ['red', 'blue']
+  name: 'Rocket',
+  age: '17',
+  colors: ['red', 'blue']
 }
 */
 ```
@@ -57,17 +57,17 @@ in config.
 1. [Set plugin settings as array](#settings-as-array)
 1. [Set plugin settings as object](#settings-as-object)
 1. [Set options settings as object](#options-settings-as-object)
-   1. [Option setting API](#option-setting-api)
-      1. [type](#type)
-      1. [required](#required)
-      1. [default](#default)
-      1. [validator](#validator)
-   1. [Checkers execution order](#checkers-execution-order)
-      1. [Exists checker](#1-exists-checker)
-      1. [Default setter](#2-default-setter)
-      1. [Type option checker](#3-type-option-checker)
-      1. [Type checker](#4-type-checker)
-      1. [Validator](#5-validator)
+    1. [Option setting API](#option-setting-api)
+        1. [type](#type)
+        1. [required](#required) 
+        1. [default](#default)
+        1. [validator](#validator)
+    1. [Checkers execution order](#checkers-execution-order)
+        1. [Exists checker](#1-exists-checker)
+        1. [Default setter](#2-default-setter)
+        1. [Type option checker](#3-type-option-checker)
+        1. [Type checker](#4-type-checker)
+        1. [Validator](#5-validator)
 1. [Config API](#config-api)
    1. [mode](#mode)
    1. [clone](#clone)
@@ -127,15 +127,15 @@ const { defineOptions } = require('@dtavern/options')
 
 // Returns { name: 'hello' }
 defineOptions(
-	{},
-	{
-		name: {
-			type: String,
-			required: false,
-			default: 'hello',
-			validator: (value) => value.length > 0,
-		},
-	}
+  {},
+  {
+    name: {
+      type: String,
+      required: false,
+      default: 'hello',
+      validator: (value) => value.length > 0,
+    },
+  }
 )
 ```
 
@@ -177,7 +177,7 @@ throw error will not happen
 
 ```js
 root: {
-	required: false
+  required: false
 }
 ```
 
@@ -297,9 +297,9 @@ options object.
 const originalObject = {}
 
 const newObject = defineOptions(
-	originalObject,
-	{ name: { required: false, default: 'Dmitry' } },
-	{ clone: true }
+  originalObject,
+  { name: { required: false, default: 'Dmitry' } },
+  { clone: true }
 )
 
 console.log(originalObject) // Returns: {}
@@ -320,21 +320,21 @@ Example:
 import { defineOptions } from '@dtavern/options'
 
 interface Options {
-	name?: string
+  name?: string
 }
 
 function someFunction(options: Options = {}) {
-	// Returns { name: 'hello' }
-	const newOptions = defineOptions<Options>(options, {
-		name: {
-			type: String,
-			required: false,
-			default: 'Dmitry',
-		},
-	})
+  // Returns { name: 'hello' }
+  const newOptions = defineOptions<Options>(options, {
+    name: {
+      type: String,
+      required: false,
+      default: 'Dmitry',
+    },
+  })
 
-	// Valid
-	console.log(newOptions.name)
+  // Valid
+  console.log(newOptions.name)
 }
 
 someFunction()
