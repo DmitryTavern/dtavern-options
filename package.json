@@ -6,6 +6,17 @@
 		"name": "Dmitry Tavern",
 		"url": "https://github.com/DmitryTavern"
 	},
+	"repository": {
+		"url": "https://github.com/DmitryTavern/dtavern-options"
+	},
+	"bugs": {
+		"url": "https://github.com/DmitryTavern/dtavern-options/issues"
+	},
+	"keywords": [
+		"options",
+		"options-parese",
+		"options-validator"
+	],
 	"license": "MIT",
 	"main": "dist/index.js",
 	"module": "dist/index.esm.js",
