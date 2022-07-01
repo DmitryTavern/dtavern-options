@@ -47,7 +47,8 @@ someFunction({
 ```
 
 How you can see, `defineOptions` **overwrite original object**.
-If you need clone object, use spread operator.
+If you need clone object, use spread operator or set clone option
+in config.
 
 # Documentation
 
@@ -67,6 +68,9 @@ If you need clone object, use spread operator.
       1. [Type option checker](#3-type-option-checker)
       1. [Type checker](#4-type-checker)
       1. [Validator](#5-validator)
+1. [Config API](#config-api)
+   1. [mode](#mode)
+   1. [clone](#clone)
 1. [Using typescript](#using-typescript)
 
 ## **Settings as array**
@@ -260,6 +264,47 @@ If the validator does exist in options, the script calls it.
 If the validator returns `true` - the script moves to the
 next property or ends work. But if returns `false` - this
 will result in an error
+
+## **Config API**
+
+### **mode**
+
+Type: `strict`, `log`, `disabled`\
+Default: `strict`
+
+Mode option needs for changes the way errors are output.
+
+- **strict** - error will be throw script
+- **log** - error will be output to console
+- **disabled** - error will be ignored
+
+Example:
+
+```js
+// Error without throw script
+defineOptions({}, ['name'], { mode: 'log' })
+```
+
+### **clone**
+
+Type: `boolean`\
+Default: `false`
+
+Clone option needed if you don't want to change the original
+options object.
+
+```js
+const originalObject = {}
+
+const newObject = defineOptions(
+	originalObject,
+	{ name: { required: false, default: 'Dmitry' } },
+	{ clone: true }
+)
+
+console.log(originalObject) // Returns: {}
+console.log(newObject) // Returns: { name: 'Dmitry' }
+```
 
 ## **Using typescript**
 
